@@ -1,0 +1,1 @@
+const chart_colors = ['rgba(4,30,66, 1)', 'rgba(151, 153, 155, 1)']
