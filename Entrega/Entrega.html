@@ -10,92 +10,30 @@
     <script src="https://digitaldesign.scania.com/builds/themes/scania/1.2.0-3/scania-theme.js"></script>
     <script src="https://digitaldesign.scania.com/builds/components/4.2.0-2/corporate-ui.js"></script>
 
-    <style>
-        @media (min-width: 375px) {
-            div.row {
-                margin: 0 0;
-                padding-left: 12%;
-                padding-bottom: 5px;
-            }
-            div.col-sm-4 {
-                padding-bottom: 5%;
-            }
-        }
-        
-        @media (min-width: 576px) {
-            div.row {
-                margin: 0 0;
-                padding-left: 15%;
-            }
-            div.col-sm-4 {
-                display: flex;
-                flex-basis: auto;
-                margin: 50px 0px;
-                min-width: 250px;
-                -ms-flex: 100%;
-                flex: 100%;
-                max-width: 10%;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-content: center;
-            }
-        }
-        
-        @media (min-width: 780px) {
-            div.row {
-                margin: 0 0;
-                padding-left: 15%;
-            }
-            div.col-sm-4 {
-                display: flex;
-                flex-basis: auto;
-                margin: 100px 0px;
-                min-width: 250px;
-                -ms-flex: 100%;
-                flex: 100%;
-                max-width: 10%;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-content: center;
-            }
-        }
-    </style>
 </head>
 
 <body>
     <c-theme name="scania" global="true"></c-theme>
+    <c-header site-name="SPS Office - Cab Base Process"></c-header>
 
-    <c-header site-name="SPS Office - Cab Base Process">
-    </c-header>
-
+    <!-- abas secundárias -->
     <c-navigation>
-        <a href="../index.html" class="parent active" slot="primary-items">home</a>
-        <a href="../overview.html" slot="primary-items">overview</a>
-        <a href="../kpi.html" slot="primary-items">kpi</a>
-        <a href="../RDP/rdp.html" slot="primary-items">rdp</a>
+        <a href="\Main\Main.html" slot="primary-items">Home</a>
+        <a href="\Custos\Custos.html" slot="primary-items">Custo</a>
+        <a href="" class="parent active" slot="primary-items">Entrega</a>
+        <a href="" slot="primary-items">Qualidade</a>
+        <a href="" slot="primary-items">SHE</a>
+        <a href="" slot="primary-items">Situação Normal</a>
+
+        <!-- <c-navigation slot='sub' target='/index.html' active>
+            <a href='' slot='primary-items' active>Main</a>
+            <a href='Lista Mestra.html' slot='primary-items'>Lista Mestra</a>
+        </c-navigation> -->
+
     </c-navigation>
 
-    <c-content>
-        <section>
-            <div class="container-fluid">
-                <h1>Quality</h1>
-
-                <!-- Example of c-table component         -->
-                <c-table></c-table>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <a href="glue-main.html"><img src="../Imagens/glue_vetor.svg" alt="Glue Report" style="width:200px; border:1px solid black; box-shadow: 6px 6px rgba(0, 0, 0, 0.1);">
-                        </a>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
-    </c-content>
-
     <c-footer>
-        <a href="" slot="items">Contact</a>
+        <a href="" slot="items">Dúvidas? Entre em Contato</a>
     </c-footer>
 
 </body>
