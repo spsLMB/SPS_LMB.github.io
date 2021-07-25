@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+  <title>BiW - Plant management platform</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="https://digitaldesign.scania.com/builds/themes/scania/1.2.0-3/scania-theme.js"></script>
+  <script src="https://digitaldesign.scania.com/builds/components/4.2.0-2/corporate-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="../estilo1.css">
+
+</head>
+
+<!----------------------------------------- CABEÇALHO -------------------------------------------->
+<body>
+  <c-theme name="scania" global="true"></c-theme>
+
+  <c-header site-name="BiW - Plant management platform">
+  </c-header>
+  
+  <c-navigation>
+    <a href="../index.html" class="parent active" slot="primary-items">home</a>
+    <a href="../overview.html" slot="primary-items">overview</a>
+    <a href="../kpi.html" slot="primary-items">kpi</a>
+    <a href="../RDP/rdp.html" slot="primary-items">rdp</a>
+
+<!------------------------------------------------------------------------------------------------>
+<!----------------------------------------- TOOLBAR ---------------------------------------------->
+   <!-- <c-navigation slot='sub' target='/index.html' active>
+      <a href='' slot='primary-items' active>Sustainability</a>
+      <a href='' slot='primary-items'>Energy</a>
+      <a href='' slot='primary-items' active>Air</a>
+      <a href='' slot='primary-items'>Water</a>
+      <a href='' slot='primary-items'>Dumpers</a>
+   -->
+    </c-navigation>
+  </c-navigation>
+
+  <c-content>
+    <section style="padding-bottom: 10px;">
+      <div class="container-fluid">
+        <h1>Motors</h1>
+        <br>
+<!--------------------------------------------------------------------------------------------------->
+<!--------------------------------------- PROCESS OPTION -------------------------------------------->
+      <select name="selection" id="selection" onchange="if (this.selectedIndex) option_processo()">
+        <option value="nenhum">--- Choose a process ---</option>
+        <optgroup label="Door Left" class="grupo"></optgroup>
+        <option value="door_left-dl1-0" >Lift DL</option>
+        <option value="door_left-dl1-1" >Motor T1</option>
+
+        <optgroup label="Door Right" class="grupo"></optgroup>
+        <option value="door_right-dr1-0" >Lift DR</option>
+        <option value="door_right-dr1-1" >Motor T2</option>
+        <option value="door_right-dr1-2" >Motor T3</option>
+
+        <optgroup label="Front Wall" class="grupo"></optgroup>
+        <option value="front_wall-ft1-0">Conveyor FT</option>
+
+        <optgroup label="Floor Complete" class="grupo"></optgroup>
+        <option value="floor_complete-fc1-0">Conveyor FR</option>
+        <option value="floor_complete-fc1-1">Conveyor FL</option>
+
+        <optgroup label="Main Frame 1" class="grupo"></optgroup>
+        <option value="main_frame-mf1-2">Conveyor RW</option>
+        <option value="main_frame-mf1-0">Conveyor FC</option>
+        <option value="main_frame-mf1-1">Conveyor RO</option>
+
+        <optgroup label="Main Frame 2" class="grupo"></optgroup>
+        <option value="main_frame-mf2-0">Conveyor SL</option>
+        <option value="main_frame-mf2-1">Conveyor SR</option>
+
+        <optgroup label="Main Variant" class="grupo"></optgroup>
+        <option value="main_variant-mv1-0">Motor T4</option>
+        <option value="main_variant-mv1-1">Motor T5</option>
+        <option value="main_variant-mv1-2">Motor T6</option>
+        <option value="main_variant-mv1-3">Motor T7</option>
+        <option value="main_variant-mv1-4">Motor T8</option>
+        <option value="main_variant-mv1-5">Motor T9</option>
+        <option value="main_variant-mv1-6">Motor T10</option>
+        <option value="main_variant-mv1-7">Motor T11</option>
+        <option value="main_variant-mv1-8">Motor T12</option>
+        <option value="main_variant-mv1-9">Motor T13</option>
+        <option value="main_variant-mv1-10">Motor T14</option>
+        <option value="main_variant-mv1-11">Motor T15</option>
+        <option value="main_variant-mv1-12">Motor T16</option>
+        <option value="main_variant-mv1-13">Motor T17</option>
+        <option value="main_variant-mv1-14">Motor T18</option>
+        <option value="main_variant-mv1-15">Motor T19</option>
+        <option value="main_variant-mv1-18">Motor T20</option>
+        <option value="main_variant-mv1-19">Motor T21</option>
+        <option value="main_variant-mv1-20">Motor T22</option>
+        <option value="main_variant-mv1-21">Motor T23</option>
+        <option value="main_variant-mv1-22">Motor T24</option>
+        <option value="main_variant-mv1-23">Motor T25</option>
+        <option value="main_variant-mv1-17">Motor Lift DL</option>
+        <option value="main_variant-mv1-16">Motor Lift DR</option>
+      </select>
+      <br>
+      <br>
+<!------------------------------------------------------------------------------------------------->
+<!------------------------------------------ VARIÁVEIS -------------------------------------------->
+      <label class="form-switch">Current [a]</label>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+<!------------------------------------------------------------------------------------------------->
+<!-------------------------------------- TIMELINE CHECKBOX ---------------------------------------->
+<div class="timeline">
+  <p class="timeline">
+    <label><input type="checkbox" class="class_check" id="id_check" name="check" value="realtime" onclick="onlyOne(this)"><span class='spanClass'>Real Time</span></label>
+    <label><input type="checkbox" class="class_check" id="id_check" name="check" value="hour" onclick="onlyOne(this)"><span class='spanClass'>1 hour</span></label>
+  </p>
+
+  <p class="timeline">
+    <label><input type="checkbox" class="class_check" id="id_check" name="check" value="day" onclick="onlyOne(this)"><span class='spanClass'>1 day</span></label>
+    <label><input type="checkbox" class="class_check" id="id_check" name="check" value="week" onclick="onlyOne(this)"><span class='spanClass'>1 week</span></label>
+  </p>
+
+  <p class="calendar">
+    Start date
+    <br>
+    <input id="start_date_time" type="datetime-local" onchange="custom_date('start_date_time')"/>
+  </p>
+
+  <p class="calendar">
+    End date
+    <br>
+    <input id="end_date_time" type="datetime-local" onchange="custom_date('end_date_time')"/>
+  </p>
+  <p class="time_range">
+    Range
+    <br>
+    <input type="number" min="0" value="0" autofocus name="" id="range_input" onchange="option_range()">
+    <select name="range_selection" id="range_selection" onchange="option_range()">
+      <option value="seconds">Seconds</option>
+      <option value="minutes">Minutes</option>
+      <option value="hours">Hours</option>
+      <option value="days">Days</option>
+      <option value="months">Months</option>
+    </select>
+    <br>
+    <label for="range_input" id="range_error"></label>
+  </p>
+</div>
+
+<!------------------------------------------------------------------------------------------------->
+<!---------------------------------------GRÁFICO--------------------------------------------------->
+        <c-table></c-table>
+          <div id="custom-chart">
+            <canvas id="myChart"></canvas>
+          </div>
+<!------------------------------------------------------------------------------------------------->
+      </div>
+    </section>
+  </c-content>
+
+  <c-footer>
+    <a href="" slot="items">Contact</a>
+  </c-footer>
+
+<script src="../checkbox.js"></script>
+<script>
+  filter.type = "motors"
+  filter.variable.name = "current"
+  filter.variable.unit = "A"
+  console.log(filter.type) // Teste (depois apagar)
+  console.log(filter.variable.name) // Teste (depois apagar)
+</script>
+
+</body>
+</html>

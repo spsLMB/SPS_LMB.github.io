@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BiW - Plant management platform</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://static.scania.com/build/global/themes/scania/1.1.2-1/scania-theme.js"></script>
+    <script src="https://static.scania.com/build/global/4.1.1-1/corporate-ui.js"></script>
+    <script defer src="LineKPI.js"></script>
+
+    <link rel="stylesheet" href="LineKPI.css">
+</head>
+
+<body>
+    <c-theme name="scania" global="true"></c-theme>
+    <c-header site-name="BiW - Plant management platform">
+    </c-header>
+
+    <c-navigation>
+        <a href="index.html" slot="primary-items">home</a>
+        <a href="overview.html" slot="primary-items">overview</a>
+        <a href="kpi.html" class="parent active" slot="primary-items">KPI</a>
+        <a href="RDP/rdp.html" slot="primary-items">rdp</a>
+
+    </c-navigation>
+
+    <c-content>
+        <section>
+            <div class="div-body">
+                <div class="split left">
+                    <!-- contains the left side of the page -->
+                    <div>
+                        <!--------------------------------------------------------------------------------------------------->
+                        <!--------------------------------------------- COLUMNS --------------------------------------------->
+                        <div class="header-row">
+                            <div class="name-box">
+                            </div>
+                            <div id="HeaderPlan" class="header-box">
+                                Plan
+                            </div>
+                            <div id="HeaderProd" class="header-box">
+                                Prod
+                            </div>
+                            <div id="HeaderSaldo" class="header-box">
+                                Saldo
+                            </div>
+                            <div id="HeaderPerda" class="header-box">
+                                Perda
+                            </div>
+                            <div id="HeaderBuffer" class="header-box">
+                                Buffer
+                            </div>
+                            <div class="myProgress"></div>
+                        </div>
+                        <!------------------------------------------- MAIN CONTROL ------------------------------------------>
+                        <div class="line-row">
+                            <div><i id="ArrowMC" class="arrow"></i></div>
+                            <div class="name-box">
+                                Main Control
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanMC" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdMC" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoMC" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaMC" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferMC" class="box-1">
+                                </div>
+                            </div>
+
+                            <div id="ProgressMC" class="myProgress">
+                                <div id="BarMC" class="myBar"></div>
+                            </div>
+
+                        </div>
+                        <!------------------------------------------ MAIN VARIANT ---------------------------------------->
+                        <div class="line-row">
+                            <div><i id="ArrowMV" class="arrow"></i> </div>
+                            <div class="name-box">
+                                Main Variant
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanMV" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdMV" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoMV" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaMV" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferMV" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressMV" class="myProgress">
+                                <div id="BarMV" class="myBar"></div>
+                            </div>
+
+                        </div>
+                        <!------------------------------------------- MAIN FRAME ------------------------------------------>
+                        <div class="line-row">
+                            <div><i id="ArrowMF" class="arrow"></i></div>
+                            <div class="name-box">
+                                Main Frame
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanMF" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdMF" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoMF" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaMF" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferMF" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressMF" class="myProgress">
+                                <div id="BarMF" class="myBar"></div>
+                            </div>
+
+                        </div>
+                        <!------------------------------------------- DOOR LEFT ------------------------------------------>
+                        <div class="line-row">
+                            <div> <i id="ArrowDL" class="arrow"></i></div>
+                            <div class="name-box">
+                                Door Left
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanDL" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdDL" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoDL" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaDL" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferDL" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressDL" class="myProgress">
+                                <div id="BarDL" class="myBar"></div>
+                            </div>
+                        </div>
+                        <!------------------------------------------- DOOR RIGHT ------------------------------------------>
+                        <div class="line-row">
+                            <div> <i id="ArrowDR" class="arrow"></i> </div>
+                            <div class="name-box">
+                                Door Right
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanDR" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdDR" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoDR" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaDR" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferDR" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressDR" class="myProgress">
+                                <div id="BarDR" class="myBar"></div>
+                            </div>
+                        </div>
+                        <!------------------------------------------- REAR WALL ------------------------------------------>
+                        <div class="line-row">
+                            <div> <i id="ArrowRW" class="arrow"></i></div>
+                            <div class="name-box">
+                                Rear Wall
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanRW" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdRW" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoRW" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaRW" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferRW" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressRW" class="myProgress">
+                                <div id="BarRW" class="myBar"></div>
+                            </div>
+                        </div>
+                        <!---------------------------------------------- ROOF --------------------------------------------->
+                        <div class="line-row">
+                            <i id="ArrowRO" class="arrow"></i>
+                            <div class="name-box">
+                                Roof
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanRO" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdRO" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoRO" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaRO" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferRO" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressRO" class="myProgress">
+                                <div id="BarRO" class="myBar"></div>
+                            </div>
+                        </div>
+                        <!------------------------------------------- SIDE LEFT ------------------------------------------>
+                        <div class="line-row">
+                            <i id="ArrowSL" class="arrow"></i>
+                            <div class="name-box">
+                                Side Left
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanSL" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdSL" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoSL" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaSL" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferSL" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressSL" class="myProgress">
+                                <div id="BarSL" class="myBar"></div>
+                            </div>
+                        </div>
+                        <!------------------------------------------- SIDE RIGHT ------------------------------------------>
+                        <div class="line-row">
+                            <i id="ArrowSR" class="arrow"></i>
+                            <div class="name-box">
+                                Side Right
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanSR" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdSR" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoSR" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaSR" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferSR" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressSR" class="myProgress">
+                                <div id="BarSR" class="myBar"></div>
+                            </div>
+                        </div>
+                        <!------------------------------------------- FLOOR MIDDLE ------------------------------------------>
+                        <div class="line-row">
+                            <i id="ArrowFM" class="arrow"></i>
+                            <div class="name-box">
+                                Floor Middle
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanFM" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdFM" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoFM" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaFM" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferFM" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressFM" class="myProgress">
+                                <div id="BarFM" class="myBar"></div>
+                            </div>
+                        </div>
+                        <!------------------------------------------- FLOOR COMPLETE ------------------------------------------>
+                        <div class="line-row">
+                            <i id="ArrowFC" class="arrow"></i>
+                            <div class="name-box">
+                                Floor Complete
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanFC" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdFC" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoFC" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaFC" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferFC" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressFC" class="myProgress">
+                                <div id="BarFC" class="myBar"></div>
+                            </div>
+                        </div>
+                        <!------------------------------------------- FLOOR LEFT ------------------------------------------>
+                        <div class="line-row">
+                            <i id="ArrowFL" class="arrow"></i>
+                            <div class="name-box">
+                                Floor Left
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanFL" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdFL" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoFL" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaFL" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferFL" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressFL" class="myProgress">
+                                <div id="BarFL" class="myBar"></div>
+                            </div>
+                        </div>
+                        <!------------------------------------------- FLOOR RIGHT ------------------------------------------>
+                        <div class="line-row">
+                            <div><i id="ArrowFR" class="arrow"></i></div>
+                            <div class="name-box">
+                                Floor Right
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanFR" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdFR" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoFR" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaFR" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferFR" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressFR" class="myProgress">
+                                <div id="BarFR" class="myBar"></div>
+                            </div>
+                        </div>
+                        <!------------------------------------------- FRONT WALL ------------------------------------------>
+                        <div class="line-row">
+                            <div><i id="ArrowFT" class="arrow"></i></div>
+                            <div class="name-box">
+                                Front Wall
+                            </div>
+                            <div class="group-box">
+                                <div id="PlanFT" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="ProdFT" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="SaldoFT" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="PerdaFT" class="box-1">
+                                </div>
+                            </div>
+                            <div class="group-box">
+                                <div id="BufferFT" class="box-1">
+                                </div>
+                            </div>
+                            <div id="ProgressFT" class="myProgress">
+                                <div id="BarFT" class="myBar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- closes "split left" class-->
+
+                <!--------------------------------------------------------------------------------------------------->
+                <!---------------------------------------------- TURNO ---------------------------------------------->
+                <div class="split right">
+                    <!-- contains the right side of page (Turno + Dia + OPE + %Circles)-->
+                    <div class="header-name-row">TURNO</div>
+                    <div class="big-row">
+                        <div class="big-group">
+                            <div class="big-box">
+                                <div class="h-header">Plan</div>
+                                <div id="KPIPlanDia" class="data-content"></div>
+                            </div>
+                        </div>
+                        <div class="big-group">
+                            <div class="big-box">
+                                <div class="h-header">Real</div>
+                                <div id="KPIRealDia" class="data-content"></div>
+                            </div>
+                        </div>
+                        <div class="big-group">
+                            <div class="big-box">
+                                <div class="h-header">Saldo</div>
+                                <div id="KPISaldoDia" class="data-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--------------------------------------------------------------------------------------------------->
+                    <!----------------------------------------------- DIA ----------------------------------------------->
+                    <div class="header-name-row">DIA</div>
+                    <div class="big-row">
+
+                        <div class="big-group">
+                            <div class="big-box">
+                                <div class="h-header">Plan</div>
+                                <div id="KPIPlanTurno" class="data-content"></div>
+                            </div>
+                        </div>
+                        <div class="big-group">
+                            <div class="big-box">
+                                <div class="h-header">Real</div>
+                                <div id="KPIRealTurno" class="data-content"></div>
+                            </div>
+                        </div>
+                        <div class="big-group">
+                            <div class="big-box">
+                                <div class="h-header">Saldo</div>
+                                <div id="KPISaldoTurno" class="data-content"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--------------------------------------------------------------------------------------------------->
+                    <!----------------------------------------------- OPE ----------------------------------------------->
+                    <div class="header-name-row">OPE</div>
+                    <div class="big-row-OPE">
+                        <div class="big-row">
+
+                            <div class="big-group">
+                                <div class="big-box">
+                                    <div class="h-header">Buffer MV</div>
+                                    <div id="BufferMV-MC" class="data-content"></div>
+                                </div>
+                            </div>
+
+                            <div class="big-group">
+                                <div class="big-box">
+                                    <div class="h-header">OPE - Turno</div>
+                                    <div id="OPE-Turno" class="data-content"></div>
+                                </div>
+                            </div>
+
+                            <div class="big-group">
+                                <div class="big-box">
+                                    <div class="h-header">OPE - Dia</div>
+                                    <div id="OPE-Dia" class="data-content"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--------------------------------------------------------------------------------------------------->
+                    <!-------------------------------------------- % CIRCLES -------------------------------------------->
+                    <div class="big-row-OPE">
+                        <div class="big-row"></div>
+
+                        <div class="box">
+                            <div class="percent">
+                                <svg>
+                                    <circle  cx = "70" cy= "70" r="70" ></circle>
+                                    <circle id="ProgressGraphicDia" cx = "70" cy= "70" r="70" ></circle> 
+                                </svg>
+
+                                <div class="number">
+                                    <h2 id="KPISaldoDiaGraphic"></h2>
+                                </div>
+                            </div>
+                            <h2 class="text">Prod Turno</h2>
+                        </div>
+
+                        <div class="box">
+                            <div class="percent">
+                                <svg>
+                            <circle cx = "70" cy= "70" r="70" ></circle>
+                            <circle id="ProgressGraphicSaldo" cx = "70" cy= "70" r="70" ></circle> 
+                        </svg>
+                                <div class="number">
+                                    <h2 id="KPISaldoTurnoGraphic"><span>%</span></h2>
+                                </div>
+                            </div>
+                            <h2 class="text">Prod Dia</h2>
+                        </div>
+
+                        <div class="box">
+                            <div class="percent">
+                                <svg>
+                                    <circle cx = "70" cy= "70" r="70" ></circle>
+                                    <circle id="ProgressGraphicOPETurno" cx = "70" cy= "70" r="70" ></circle> 
+                                </svg>
+
+                                <div class="number">
+                                    <h2 id="OPETurnoGraphic"><span>%</span></h2>
+                                </div>
+                            </div>
+                            <h2 class="text">OPE Turno</h2>
+                        </div>
+
+                        <div class="box">
+                            <div class="percent">
+                                <svg>
+                                    <circle cx = "70" cy= "70" r="70" ></circle>
+                                    <circle id="ProgressGraphicOPEDia" cx = "70" cy= "70" r="70" ></circle> 
+                                </svg>
+                                <div class="number">
+                                    <h2 id="OPEDiaGraphic"><span>%</span></h2>
+                                </div>
+                            </div>
+                            <h2 class="text">OPE Dia</h2>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- closes "split right" class-->
+            </div>
+        </section>
+    </c-content>
+    <c-footer>
+    </c-footer>
+</body>
+
+</html>

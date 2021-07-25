@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RDP 4.0</title>
+
+    <!--Importações-->
+    <script src="https://digitaldesign.scania.com/builds/themes/scania/1.2.0-3/scania-theme.js"></script>
+    <script src="https://digitaldesign.scania.com/builds/components/4.2.0-2/corporate-ui.js"></script>
+
+    <link rel="stylesheet" href="rdp.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
+    <script src="rdpKPI.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"
+        integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"
+        integrity="sha512-FuXN8O36qmtA+vRJyRoAxPcThh/1KJJp7WSRnjCpqA+13HYGrSWiyzrCHalCWi42L5qH1jt88lX5wy5JyFxhfQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+
+    <script src="sweetalert2@11.js"></script>
+
+    <!--
+        azul Scania: #041e42
+        verde Scania: #4bd763
+    -->
+</head>
+
+<body>
+    <c-theme name="scania" global="true"></c-theme>
+    <c-header site-name="BiW - Plant Management Platform"></c-header>
+
+    <c-navigation>
+        <a href="../index.html" slot="primary-items">home</a>
+        <a href="../overview.html" slot="primary-items">overview</a>
+        <a href="../kpi.html" slot="primary-items">kpi</a>
+        <a href="../rdp.html" class="parent active" slot="primary-items">rdp</a>
+        
+       <c-navigation slot='sub' target='/index.html' active>
+            <a href='' slot='primary-items' active >Main</a>
+            <a href='historico.html' slot='primary-items'>Histórico</a>
+        </c-navigation>
+
+    </c-navigation>
+
+    <div class="div-page">
+        <div class="div-top">
+            <div class="div-top-left">
+                <!--Dropdown Workcenters-->
+                
+                <i id ="updateTime"></i>
+
+                <select name="selection" id="selection" onchange="if (this.selectedIndex) processOption(this)">
+                    <option selected disabled hidden value="nenhum">--- Choose a process ---</option>
+                    <optgroup label="Floors" class="grupo"></optgroup>
+                    <option disabled value="floor_left-fl1">Floor Left</option>
+                    <option disabled value="floor_right-fr1">Floor Right</option>
+                    <option disabled value="floor_middle-fm1">Floor Middle</option>
+                    <option disabled value="floor_complete-fc1">Floor Complete</option>
+                    <optgroup label="Roof" class="grupo"></optgroup>
+                    <option disabled value="roof-ro">Roof</option>
+                    <optgroup label="Sides" class="grupo"></optgroup>
+                    <option disabled value="side_left-sl1">Side Left</option>
+                    <option disabled value="side_right-sr1">Side Right</option>
+                    <optgroup label="Wall" class="grupo"></optgroup>
+                    <option disabled value="rear_wall-rw1">Rear Wall</option>
+                    <option value="front_wall-ft1">Front Wall</option>
+                    <optgroup label="Doors" class="grupo"></optgroup>
+                    <option disabled value="door_left-dl1">Door Left</option>
+                    <option disabled value="door_right-dr1">Door Right</option>
+                    <optgroup label="Main" class="grupo"></optgroup>
+                    <option disabled value="main_frame-mf">Main Frame</option>
+                    <option disabled value="main_variant-mv1">Main Variant</option>
+                    <option disabled value="main_control-mc1">Main Control</option>
+                </select>
+
+                <br>
+                <br>
+                <br>
+
+                <!--Toggles de Turno-->
+                <label class="form-switch">
+                    <input type="checkbox" value="1" id="turno1" name='toggle_switch' class="toggle_switch" onclick="toggleTurno(this)">
+                    <i></i>
+                    1° Turno
+                </label>
+
+                <br>
+                <br>
+                
+                <label class="form-switch">
+                    <input type="checkbox" value="2" id="turno2" name='toggle_switch' class="toggle_switch" onclick="toggleTurno(this)">
+                    <i></i>
+                    2° Turno
+                </label>
+
+                <br>
+                <br>
+                
+                <label class="form-switch">
+                    <input type="checkbox" value="3" id="turno3" name='toggle_switch' class="toggle_switch" onclick="toggleTurno(this)">
+                    <i></i>
+                    3° Turno
+                </label>
+
+                <br>
+                <br>
+                <br>
+
+                <!--Botão refresh-->
+                <button type="button" class="btnRefresh" onclick="btnRefresh(this)">
+                    <span class="btnRefresh_text">Refresh</span>
+                </button>
+            </div>
+
+            <!--Cards de KPI-->
+            <div class="div-top-middle">
+                <div class="big-row">
+                    <div class="big-group">
+                        <div class="big-box">
+                            <div class="h-header">Stoptime Acumulado</div>
+                            <div id="Stop" class="data-content">--</div>
+                        </div>
+                    </div>
+                    <div class="big-group">
+                        <div class="big-box">
+                            <div class="h-header">N° de Interferências</div>
+                            <div id="KPIAlarms" class="data-content">--</div>
+                        </div>
+                    </div>
+                    <div class="big-group">
+                        <div class="big-box">
+                            <div class="h-header">Buffer</div>
+                            <div id="KPIBuffer" class="data-content">--</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="big-row">
+                    <div class="big-group">
+                        <div class="big-box">
+                            <div class="h-header">Planejado</div>
+                            <div id="KPIPlanDia" class="data-content">--</div>
+                        </div>
+                    </div>
+                    <div class="big-group">
+                        <div class="big-box">
+                            <div class="h-header">Produzido</div>
+                            <div id="KPIProduced" class="data-content">--</div>
+                        </div>
+                    </div>
+                    <div class="big-group">
+                        <div class="big-box">
+                            <div class="h-header">Saldo</div>
+                            <div id="KPISaldoTurno" class="data-content">--</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--Gráfico de barras-->
+            <div class="div-top-right">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+
+        <!--<button type="submit">Submit form</button>-->
+
+        <!--Tabela-->
+        <div class="div-bottom">
+            <table id="alarm-table" class="table table-striped table-clickable table-panel"></table>
+            <!--<table id="example" class="display" style="width:100%">-->
+            </table>
+        </div>
+    </div>
+
+    <script src="rdp.js"></script>
+
+    <c-footer>
+        <a href="" slot="items">Contact</a>
+    </c-footer>
+</body>
+</html>

@@ -1,0 +1,200 @@
+@font-face {
+  font-family: 'Scania Sans';
+  font-weight: normal;  
+  src: url("ScaniaSansCY-Regular.eot");
+  src: url("ScaniaSansCY-Regular.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCY-Regular.woff2") format("woff2"),
+       url("ScaniaSansCY-Regular.woff") format("woff"), 
+       url("ScaniaSansCY-Regular.ttf") format("truetype");
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans';
+  font-weight: bold;
+  src: url("ScaniaSansCY-Bold.eot");
+  src: url("ScaniaSansCY-Bold.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCY-Bold.woff2") format("woff2"), 
+       url("ScaniaSansCY-Bold.woff") format("woff"), 
+       url("ScaniaSansCY-Bold.ttf") format("truetype");  
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Bold';
+  font-weight: normal;
+  src: url("ScaniaSansCY-Bold.eot");
+  src: url("ScaniaSansCY-Bold.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCY-Bold.woff2") format("woff2"), 
+       url("ScaniaSansCY-Bold.woff") format("woff"), 
+       url("ScaniaSansCY-Bold.ttf") format("truetype");  
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans';
+  font-style: italic;
+  src: url("ScaniaSansCY-Italic.eot");
+  src: url("ScaniaSansCY-Italic.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCY-Italic.woff2") format("woff2"), 
+       url("ScaniaSansCY-Italic.woff") format("woff"), 
+       url("ScaniaSansCY-Italic.ttf") format("truetype");    
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Italic';
+  font-weight: normal;
+  src: url("ScaniaSansCY-Italic.eot");
+  src: url("ScaniaSansCY-Italic.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCY-Italic.woff2") format("woff2"), 
+       url("ScaniaSansCY-Italic.woff") format("woff"), 
+       url("ScaniaSansCY-Italic.ttf") format("truetype");    
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Headline';
+  font-weight: normal;
+  src: url("ScaniaSansCYHeadline-Regular.eot");
+  src: url("ScaniaSansCYHeadline-Regular.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCYHeadline-Regular.woff2") format("woff2"), 
+       url("ScaniaSansCYHeadline-Regular.woff") format("woff"), 
+       url("ScaniaSansCYHeadline-Regular.ttf") format("truetype");
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Headline';
+  font-weight: bold;
+  src: url("ScaniaSansCYHeadline-Bold.eot");
+  src: url("ScaniaSansCYHeadline-Bold.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCYHeadline-Bold.woff2") format("woff2"),
+       url("ScaniaSansCYHeadline-Bold.woff") format("woff"), 
+       url("ScaniaSansCY-Bold.ttf") format("truetype");
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Headline Bold';
+  font-weight: normal;
+  src: url("ScaniaSansCYHeadline-Bold.eot");
+  src: url("ScaniaSansCYHeadline-Bold.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCYHeadline-Bold.woff2") format("woff2"),
+       url("ScaniaSansCYHeadline-Bold.woff") format("woff"), 
+       url("ScaniaSansCY-Bold.ttf") format("truetype");
+  unicode-range: U+0400-04FF;
+}
+
+
+@font-face {
+  font-family: 'Scania Sans Semi Condensed';
+  font-weight: normal;
+  src: url("ScaniaSansCYSemiCondensed-Regular.eot");
+  src: url("ScaniaSansCYSemiCondensed-Regular.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCYSemiCondensed-Regular.woff2") format("woff2"), 
+       url("ScaniaSansCYSemiCondensed-Regular.woff") format("woff"), 
+       url("ScaniaSansCYSemiCondensed-Regular.ttf") format("truetype");
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Semi Condensed';
+  font-weight: bold;
+  src: url("ScaniaSansCYSemiCondensed-Bold.eot");
+  src: url("ScaniaSansCYSemiCondensed-Bold.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCYSemiCondensed-Bold.woff2") format("woff2"), 
+       url("ScaniaSansCYSemiCondensed-Bold.woff") format("woff"), 
+       url("ScaniaSansCY-Bold.ttf") format("truetype");
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Semi Condensed Bold';
+  font-weight: normal;
+  src: url("ScaniaSansCYSemiCondensed-Bold.eot");
+  src: url("ScaniaSansCYSemiCondensed-Bold.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCYSemiCondensed-Bold.woff2") format("woff2"), 
+       url("ScaniaSansCYSemiCondensed-Bold.woff") format("woff"), 
+       url("ScaniaSansCY-Bold.ttf") format("truetype");
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Semi Condensed';
+  font-style: italic;
+  src: url("ScaniaSansCYSemiCondensed-Italic.eot");
+  src: url("ScaniaSansCYSemiCondensed-Italic.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCYSemiCondensed-Italic.woff2") format("woff2"), 
+       url("ScaniaSansCYSemiCondensed-Italic.woff") format("woff"), 
+       url("ScaniaSansCYSemiCondensed-Italic.ttf") format("truetype");
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Semi Condensed Italic';
+  font-weight: normal;
+  src: url("ScaniaSansCYSemiCondensed-Italic.eot");
+  src: url("ScaniaSansCYSemiCondensed-Italic.eot?#iefix") format("embedded-opentype"),
+       url("ScaniaSansCYSemiCondensed-Italic.woff2") format("woff2"),
+       url("ScaniaSansCYSemiCondensed-Italic.woff") format("woff"),
+       url("ScaniaSansCYSemiCondensed-Italic.ttf") format("truetype");
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Condensed';
+  font-weight: normal;
+  src: url("ScaniaSansCYCondensed-Regular.eot");
+  src: url("ScaniaSansCYCondensed-Regular.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCYCondensed-Regular.woff2") format("woff2"), 
+       url("ScaniaSansCYCondensed-Regular.woff") format("woff"), 
+       url("ScaniaSansCYCondensed-Regular.ttf") format("truetype");
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Condensed';
+  font-weight: bold;
+  src: url("ScaniaSansCYCondensed-Bold.eot");
+  src: url("ScaniaSansCYCondensed-Bold.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCYCondensed-Bold.woff2") format("woff2"), 
+       url("ScaniaSansCYCondensed-Bold.woff") format("woff"), 
+       url("ScaniaSansCY-Bold.ttf") format("truetype");
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Condensed Bold';
+  font-weight: normal;
+  src: url("ScaniaSansCYCondensed-Bold.eot");
+  src: url("ScaniaSansCYCondensed-Bold.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCYCondensed-Bold.woff2") format("woff2"), 
+       url("ScaniaSansCYCondensed-Bold.woff") format("woff"), 
+       url("ScaniaSansCY-Bold.ttf") format("truetype");
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Condensed';
+  font-style: italic;
+  src: url("ScaniaSansCYCondensed-Italic.eot");
+  src: url("ScaniaSansCYCondensed-Italic.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCYCondensed-Italic.woff2") format("woff2"), 
+       url("ScaniaSansCYCondensed-Italic.woff") format("woff"), 
+       url("ScaniaSansCYCondensed-Italic.ttf") format("truetype");    
+  unicode-range: U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Scania Sans Condensed Italic';
+  font-weight: normal;
+  src: url("ScaniaSansCYCondensed-Italic.eot");
+  src: url("ScaniaSansCYCondensed-Italic.eot?#iefix") format("embedded-opentype"), 
+       url("ScaniaSansCYCondensed-Italic.woff2") format("woff2"), 
+       url("ScaniaSansCYCondensed-Italic.woff") format("woff"), 
+       url("ScaniaSansCYCondensed-Italic.ttf") format("truetype");    
+  unicode-range: U+0400-04FF;
+}
+
+

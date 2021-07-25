@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BiW - Plant management platform</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Importações(verificar)-->
+    <script src="https://digitaldesign.scania.com/builds/themes/scania/1.2.0-3/scania-theme.js"></script>
+    <script src="https://digitaldesign.scania.com/builds/components/4.2.0-2/corporate-ui.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+    <link rel="stylesheet" href="../estilo1.css">
+    <link rel="stylesheet" href="rdp.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css" />
+
+    <script src="sweetalert2@11.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+    <style>
+        #histRDP-table_wrapper{
+        max-width: 1800px;
+        min-width: 800px;
+        margin-top: -460px;
+        margin-left: 273px;
+        }
+    </style>
+</head>
+
+<!----------------------------------------- CABEÇALHO -------------------------------------------->
+
+<body>
+    <c-theme name="scania" global="true"></c-theme>
+    <c-header site-name="BiW - Plant management platform"></c-header>
+
+    <c-navigation>
+        <a href="../index.html" slot="primary-items">home</a>
+        <a href="../overview.html" slot="primary-items">overview</a>
+        <a href="../kpi.html" slot="primary-items">kpi</a>
+        <a href="../RDP/rdp.html" class="parent active" slot="primary-items">rdp</a>
+
+        <c-navigation slot='sub' target='/index.html' active>
+            <a href='rdp.html' slot='primary-items'>Main</a>
+            <a href='historico.html' slot='primary-items' active>Histórico</a>
+        </c-navigation>
+
+    </c-navigation>
+
+    <c-content>
+        <section style="padding-bottom: 10px;">
+            <div class="container-fluid">
+
+                <!--------------------------------------- PROCESS OPTION -------------------------------------------->
+                <select name="selection" id="selection" onchange="if (this.selectedIndex) processOption(this)">
+                    <option selected disabled hidden value="nenhum">--- Choose a process ---</option>
+                    <optgroup label="Floors" class="grupo"></optgroup>
+                    <option disabled value="floor_left-fl1">Floor Left</option>
+                    <option disabled value="floor_right-fr1">Floor Right</option>
+                    <option disabled value="floor_middle-fm1">Floor Middle</option>
+                    <option disabled value="floor_complete-fc1">Floor Complete</option>
+                    <optgroup label="Roof" class="grupo"></optgroup>
+                    <option disabled value="roof-ro">Roof</option>
+                    <optgroup label="Sides" class="grupo"></optgroup>
+                    <option disabled value="side_left-sl1">Side Left</option>
+                    <option disabled value="side_right-sr1">Side Right</option>
+                    <optgroup label="Wall" class="grupo"></optgroup>
+                    <option disabled value="rear_wall-rw1">Rear Wall</option>
+                    <option value="front_wall-ft1">Front Wall</option>
+                    <optgroup label="Doors" class="grupo"></optgroup>
+                    <option disabled value="door_left-dl1">Door Left</option>
+                    <option disabled value="door_right-dr1">Door Right</option>
+                    <optgroup label="Main" class="grupo"></optgroup>
+                    <option disabled value="main_frame-mf">Main Frame</option>
+                    <option disabled value="main_variant-mv1">Main Variant</option>
+                    <option disabled value="main_control-mc1">Main Control</option>
+                </select>
+
+                <br>
+                <br>
+                
+                <!-------------------------------------- TIMELINE CHECKBOX ---------------------------------------->
+                <div class="timeline" id="div-alarm-timeline">
+                    <div id='right_side'>
+                        <p class="alarm-timeline" id="alarm-timeline">
+                            <label><input type="checkbox" class="class_check" id="id_check" name="check" value="current" onclick="checkbox_timeline(this)"><span class='spanClass' id="currentalarm">Current</span></label>
+                            <label><input type="checkbox" class="class_check" id="id_check" name="check" value="month" onclick="checkbox_timeline(this)"><span class='spanClass'>1 month</span></label>
+                        </p>
+
+                        <p class="alarm-timeline" id="alarm-timeline">
+                            <label><input type="checkbox" class="class_check" id="id_check" name="check" value="day" onclick="checkbox_timeline(this)"><span class='spanClass'>1 day</span></label>
+                            <label><input type="checkbox" class="class_check" id="id_check" name="check" value="week" onclick="checkbox_timeline(this)"><span class='spanClass'>1 week</span></label>
+                        </p>
+                    </div>
+
+                    <p class="calendar">
+                        Start date
+                        <br>
+                        <input id="start_date_time" type="datetime-local" onchange="custom_date(this)" />
+                    </p>
+
+                    <p class="calendar">
+                        End date
+                        <br>
+                        <input id="end_date_time" type="datetime-local" onchange="custom_date(this)" />
+                    </p>
+                </div>
+                
+                
+                <!------------------------------------------ VARIÁVEIS -------------------------------------------->
+
+                <!-- <input type="button" id="btnExport" value="Excel" />
+
+                <br>
+                <br> -->
+
+                <button type="button" class="btnRefresh" onclick="btnRefresh(this)">
+                    <span class="btnRefresh_text">Refresh</span>
+                </button>
+
+                <!---------------------------------------- TABELA ------------------------------------------------->
+                <div id="div-alarm-table">
+
+                    <table id="histRDP-table" class="table table-striped table-clickable table-panel"></table>
+
+                    <script type="text/javascript">
+                        $("body").on("click", "#btnExport", function() {
+                            html2canvas($('#alarm-table')[0], {
+                                onrendered: function(canvas) {
+                                    var data = canvas.toDataURL();
+                                    var docDefinition = {
+                                        content: [{
+                                            image: data,
+                                            width: 500
+                                        }]
+                                    };
+                                    pdfMake.createPdf(docDefinition).download("alarm-ranking.pdf");
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+    </c-content>
+
+    <br>
+    <br>
+
+    <c-footer>
+        <a href="" slot="items">Contact</a>
+    </c-footer>
+
+    <script src="rdpHIST.js"></script>
+    
+</body>
+</html>

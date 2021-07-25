@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BiW - Plant management platform</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://digitaldesign.scania.com/builds/themes/scania/1.2.0-3/scania-theme.js"></script>
+    <script src="https://digitaldesign.scania.com/builds/components/4.2.0-2/corporate-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+    <link rel="stylesheet" href="../estilo1.css">
+    <link rel="stylesheet" href="quality-style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css" />
+</head>
+
+<!----------------------------------------- CABEÇALHO -------------------------------------------->
+
+<body>
+    <c-theme name="scania" global="true"></c-theme>
+
+    <c-header site-name="BiW - Plant management platform">
+    </c-header>
+
+    <c-navigation>
+        <a href="../index.html" class="parent active" slot="primary-items">home</a>
+        <a href="../overview.html" slot="primary-items">overview</a>
+        <a href="../kpi.html" slot="primary-items">kpi</a>
+        <a href="../RDP/rdp.html" slot="primary-items">rdp</a>
+
+<!------------------------------------------------------------------------------------------------>
+<!----------------------------------------- TOOLBAR ---------------------------------------------->
+        <c-navigation slot='sub' target='/index.html' active>
+      <a href='glue-main.html' slot='primary-items' active>Main</a>
+      <a href='glue-charts.html' slot='primary-items'>Charts</a>
+ 
+    </c-navigation>
+    </c-navigation>
+
+    <c-content>
+        <section style="padding-bottom: 10px;">
+            <div class="container-fluid">
+                <h1>Glue Report</h1>
+                <br>
+<!--------------------------------------------------------------------------------------------------->
+<!--------------------------------------- PROCESS OPTION -------------------------------------------->
+                <select name="selection" id="selection" onchange="if (this.selectedIndex) process_option(this)">
+                    <option value="nenhum">--- Choose a process ---</option>
+                    <optgroup label="Roof" class="grupo"></optgroup>
+                    <option hidden value="roof-ro1">Roof 1</option>
+                    <option value="roof-ro2">Roof 2</option>
+
+                    <optgroup label="Sides" class="grupo"></optgroup>
+                    <option value="side_left-sl1">Side Left</option>
+                    <option value="side_right-sr1">Side Right</option>
+
+                    <optgroup label="Doors" class="grupo"></optgroup>
+                    <option value="door_left-dl1" >Door Left</option>
+                    <option value="door_right-dr1" >Door Right</option>
+
+                    <optgroup label="Floors" class="grupo"></optgroup>
+                    <option hidden value="floor_left-fl1">Floor Left</option>
+                    <option hidden value="floor_right-fr1">Floor Right</option>
+                    <option value="floor_middle-fm1">Floor Middle</option>
+                    <option value="floor_complete-fc1">Floor Complete</option>
+
+                    <optgroup label="Main" class="grupo"></optgroup>
+                    <option hidden value="main_frame-mf1">Main Frame 1</option>
+                    <option value="main_frame-mf2">Main Frame 2</option>
+                    <option hidden value="main_frame-mf3">Main Frame 3</option>
+                    <option hidden value="main_variant-mv1">Main Variant</option>
+
+                    <optgroup label="Wall" class="grupo"></optgroup>
+                    <option hidden value="rear_wall-rw1">Rear Wall</option>
+                    <option value="front_wall-ft1">Front Wall</option>
+                </select>
+                <br>
+                <br>
+<!------------------------------------------------------------------------------------------------->
+<!------------------------------------------ STATUS -------------------------------------------->
+                <select name="selection" id="selection" onchange="if (this.selectedIndex) status_option(this)">
+                    <option value="nenhum">----- Choose status -----</option>
+                    <option value="ReglueByPass">By pass</option>
+                    <option value="reglue">Reglue</option>
+                    <option hidden value="na">N/A</option>
+                </select>
+                <br>
+                <br>
+                <input type="button" id="btnExport" value="PDF" />
+                <br>
+                <br>
+                <button type="button" class="btnRefresh" onclick="refresh_button_glue(this)">
+                    <span class="btnRefresh_text">Refresh</span>
+                </button>
+<!------------------------------------------------------------------------------------------------->
+<!-------------------------------------- TIMELINE CHECKBOX ---------------------------------------->
+                <div class="timeline" id="div-glue-timeline">
+                    <div id='right_side'>
+                        <p class="glue-timeline" id="glue-timeline">
+                            <label><input type="checkbox" class="class_check" id="id_check" name="check" value="day" onclick="checkbox_timeline(this)"><span class='spanClass'>1 day</span></label>
+                            <label><input type="checkbox" class="class_check" id="id_check" name="check" value="week" onclick="checkbox_timeline(this)"><span class='spanClass'>1 week</span></label>
+                        </p>
+                    </div>
+                    <p class="calendar" id="startdate">
+                        Start date
+                        <br>
+                        <input id="start_date_time" type="datetime-local" onchange="custom_date(this)" />
+                    </p>
+
+                    <p class="calendar" id="endate">
+                        End date
+                        <br>
+                        <input id="end_date_time" type="datetime-local" onchange="custom_date(this)" />
+                    </p>
+                    <p class="popid_search" name="popid_selection" id="popid_selection" onchange="if (this.selectedIndex) ranking_option(this)" style="display: none;">
+                        POPID
+                        <input id="popid_search" type="search", onchange="popid_save(this)">
+                    </p>
+                    
+
+                    <input type="button" id="hide_show" value="POPID" onclick="HideRanking()" />
+                </div>
+                <!------------------------------------------------------------------------------------------------->
+                <!---------------------------------------- TABELA ------------------------------------------------->
+                <c-table></c-table>
+                <div id="div-glue-table">
+
+                    <table id="glue-table" class="table table-striped table-clickable table-panel"></table>
+
+                    <script type="text/javascript">
+                        $("body").on("click", "#btnExport", function() {
+                            html2canvas($('#glue-table')[0], {
+                                onrendered: function(canvas) {
+                                    var data = canvas.toDataURL();
+                                    var docDefinition = {
+                                        content: [{
+                                            image: data,
+                                            width: 500
+                                        }]
+                                    };
+                                    pdfMake.createPdf(docDefinition).download("glue-report.pdf");
+
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+
+
+                <!------------------------------------------------------------------------------------------------->
+
+
+            </div>
+        </section>
+    </c-content>
+
+    <c-footer>
+        <a href="" slot="items">Contact</a>
+    </c-footer>
+
+    <script src="quality-script.js"></script>
+    <script>
+        glue_filter.chart.page = false
+        console.log(glue_filter.chart.page)
+    </script>
+
+</body>
+
+</html>

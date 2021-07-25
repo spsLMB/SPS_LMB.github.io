@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+  <title>BiW - Plant management platform</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <script src="https://digitaldesign.scania.com/builds/themes/scania/1.2.0-3/scania-theme.js"></script>
+  <script src="https://digitaldesign.scania.com/builds/components/4.2.0-2/corporate-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="../estilo1.css">
+
+</head>
+
+<!----------------------------------------- CABEÇALHO -------------------------------------------->
+<body>
+  <c-theme name="scania" global="true"></c-theme>
+
+  <c-header site-name="BiW - Plant management platform">   
+  </c-header>
+  
+  <c-navigation>
+    <a href="../index.html" class="parent active" slot="primary-items">home</a>
+    <a href="../overview.html" slot="primary-items">overview</a>
+    <a href="../kpi.html" slot="primary-items">kpi</a>
+    <a href="../RDP/rdp.html" slot="primary-items">rdp</a>
+
+<!------------------------------------------------------------------------------------------------>
+<!----------------------------------------- TOOLBAR ---------------------------------------------->
+   <!-- <c-navigation slot='sub' target='/index.html' active>
+      <a href='' slot='primary-items' active>Sustainability</a>
+      <a href='' slot='primary-items'>Energy</a>
+      <a href='' slot='primary-items' active>Air</a>
+      <a href='' slot='primary-items'>Water</a>
+      <a href='' slot='primary-items'>Dumpers</a>
+   -->
+    </c-navigation>
+  </c-navigation>
+
+  <c-content>
+    <section style="padding-bottom: 10px;">
+      <div class="container-fluid">
+        <h1>Air</h1>
+        <br>
+<!--------------------------------------------------------------------------------------------------->
+<!--------------------------------------- PROCESS OPTION -------------------------------------------->
+      <select name="selection" id="selection" onchange="if (this.selectedIndex) option_processo()">
+        <option value="nenhum">--- Choose a process ---</option>
+        <optgroup label="Roof" class="grupo"></optgroup>
+        <option value="roof-ro1-0">Roof 1</option>
+        <option value="roof-ro2-0">Roof 2</option>
+
+        <optgroup label="Sides" class="grupo"></optgroup>
+        <option value="side_left-sl1-0">Side Left</option>
+        <option value="side_right-sr1-0">Side Right</option>
+
+        <optgroup label="Doors" class="grupo"></optgroup>
+        <option value="door_left-dl1-0" >Door Left</option>
+        <option value="door_right-dr1-0" >Door Right</option>
+
+        <optgroup label="Floors" class="grupo"></optgroup>
+        <option value="floor_left-fl1-0">Floor Left</option>
+        <option value="floor_right-fr1-0">Floor Right</option>
+        <option value="floor_middle-fm1-0">Floor Middle</option>
+        <option value="floor_complete-fc1-0">Floor Complete</option>
+
+        <optgroup label="Main" class="grupo"></optgroup>
+        <option value="main_frame-mf1-0">Main Frame 1</option>
+        <option value="main_frame-mf2-0">Main Frame 2</option>
+        <option value="main_frame-mf3-0">Main Frame 3</option>
+        <option value="main_variant-mv1-0-1">Main Variant</option>
+
+        <optgroup label="Wall" class="grupo"></optgroup>
+        <option value="rear_wall-rw1-0">Rear Wall</option>
+        <option value="front_wall-ft1-0">Front Wall</option>
+      </select>
+      <br>
+      <br>
+<!------------------------------------------------------------------------------------------------->
+<!------------------------------------------ VARIÁVEIS -------------------------------------------->
+      <label class="form-switch">
+        <input type="checkbox" value="pressure" id="pressure" name='toggle_switch' class="toggle_switch" onclick="(toggle_variaveis('pressure', 'bar'))">
+        <i></i>
+        PRESSURE  [bar]
+      </label>
+      <br>
+      <br>
+      <label class="form-switch">
+        <input type="checkbox" value="volume" id="volume" name='toggle_switch' class="toggle_switch" onclick="(toggle_variaveis('volume', 'm³'))">
+        <i></i>
+        VOLUME [m³]
+      </label>
+      <br>
+      <br>
+      <label class="form-switch">
+        <input type="checkbox" value="flow" id="flow" class="toggle_switch" onclick="(toggle_variaveis('flow', 'm³/h'))">
+        <i></i>
+        FLOW [m³/h]
+      </label>
+      <br>
+      <br>
+      <label class="form-switch">
+        <input type="checkbox" value="temperature" id="temperature" class="toggle_switch" onclick="(toggle_variaveis('temperature', '°C'))">
+        <i></i>
+        Temperature [°C]
+      </label>
+      <br>
+      <br>
+
+<!------------------------------------------------------------------------------------------------->
+<!-------------------------------------- TIMELINE CHECKBOX ---------------------------------------->
+<div class="timeline">
+  <p class="timeline">
+    <label><input type="checkbox" class="class_check" id="id_check" name="check" value="realtime" onclick="onlyOne(this)"><span class='spanClass'>Real Time</span></label>
+    <label><input type="checkbox" class="class_check" id="id_check" name="check" value="hour" onclick="onlyOne(this)"><span class='spanClass'>1 hour</span></label>
+  </p>
+
+  <p class="timeline">
+    <label><input type="checkbox" class="class_check" id="id_check" name="check" value="day" onclick="onlyOne(this)"><span class='spanClass'>1 day</span></label>
+    <label><input type="checkbox" class="class_check" id="id_check" name="check" value="week" onclick="onlyOne(this)"><span class='spanClass'>1 week</span></label>
+  </p>
+
+  <p class="calendar">
+    Start date
+    <br>
+    <input id="start_date_time" type="datetime-local" onchange="custom_date('start_date_time')"/>
+  </p>
+
+  <p class="calendar">
+    End date
+    <br>
+    <input id="end_date_time" type="datetime-local" onchange="custom_date('end_date_time')"/>
+  </p>
+  <p class="time_range">
+    Range
+    <br>
+    <input type="number" min="0" value="0" autofocus name="" id="range_input" onchange="option_range()">
+    <select name="range_selection" id="range_selection" onchange="option_range()">
+      <option value="seconds">Seconds</option>
+      <option value="minutes">Minutes</option>
+      <option value="hours">Hours</option>
+      <option value="days">Days</option>
+      <option value="months">Months</option>
+    </select>
+    <br>
+    <label for="range_input" id="range_error"></label>
+  </p>
+</div>
+
+<!------------------------------------------------------------------------------------------------->
+<!---------------------------------------GRÁFICO--------------------------------------------------->
+        <c-table></c-table>
+          <div id="custom-chart">
+            <canvas id="myChart"></canvas>
+          </div>
+<!------------------------------------------------------------------------------------------------->
+      </div>
+    </section>
+  </c-content>
+
+  <c-footer>
+    <a href="" slot="items">Contact</a>
+  </c-footer>
+
+<script src="../checkbox.js"></script>
+<script>
+  filter.type = "air"
+  console.log(filter.type) // Teste (depois apagar)
+</script>
+
+</body>
+</html>

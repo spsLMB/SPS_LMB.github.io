@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+  <title>BiW - Plant management platform</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+   <script src="https://digitaldesign.scania.com/builds/themes/scania/1.2.0-3/scania-theme.js"></script>
+   <script src="https://digitaldesign.scania.com/builds/components/4.2.0-2/corporate-ui.js"></script>
+  
+   <style>
+    @media (min-width: 375px){
+      div.row {
+        margin: 0 0;
+        padding-left: 12%;
+        padding-bottom: 5px;
+      }
+      div.col-sm-4 {
+        padding-bottom: 5%;
+      }
+    }
+    @media (min-width: 576px){
+      div.row {
+        margin: 0 0;
+        padding-left: 15%;
+      }
+      div.col-sm-4 {
+        display: flex;
+        flex-basis: auto;
+        margin: 50px 0px;
+        min-width: 250px;
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 10%;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+      }
+    }
+    @media (min-width: 780px){
+      div.row {
+        margin: 0 0;
+        padding-left: 15%;
+      }
+      div.col-sm-4 {
+        display: flex;
+        flex-basis: auto;
+        margin: 100px 0px;
+        min-width: 250px;
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 10%;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+      }
+    }
+   </style>
+</head>
+<body>
+  <c-theme name="scania" global="true"></c-theme>
+
+  <c-header site-name="BiW - Plant management platform">   
+  </c-header>
+  
+  <c-navigation>
+    <a href="../index.html" class="parent active" slot="primary-items">home</a>
+    <a href="../overview.html" slot="primary-items">overview</a>
+    <a href="../kpi.html" slot="primary-items">kpi</a>
+    <a href="../RDP/rdp.html" slot="primary-items">rdp</a>
+
+  </c-navigation>
+
+  <c-content>
+    <section>
+      <div class="container-fluid">
+        <h1>Water</h1>
+        
+        <!-- Example of c-table component         -->
+        <c-table></c-table>
+        
+        
+        
+      </div>
+    </section>
+  </c-content>
+
+  <c-footer>
+    <a href="" slot="items">Contact</a>
+  </c-footer>
+  
+</body>
+</html>

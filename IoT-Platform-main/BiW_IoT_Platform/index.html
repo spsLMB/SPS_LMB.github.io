@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BiW - Plant management platform</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://digitaldesign.scania.com/builds/themes/scania/1.2.0-3/scania-theme.js"></script>
+    <script src="https://digitaldesign.scania.com/builds/components/4.2.0-2/corporate-ui.js"></script>
+    <link rel="stylesheet" href="estilo1.css">
+
+</head>
+
+<body>
+    <c-theme name="scania" global="true"></c-theme>
+
+    <c-header site-name="BiW - Plant management platform"></c-header>
+
+    <c-navigation>
+        <a href="index.html" class="parent active" slot="primary-items">home</a>
+        <a href="overview.html" slot="primary-items">overview</a>
+        <a href="kpi.html" slot="primary-items">kpi</a>
+        <a href="RDP/rdp.html" slot="primary-items">rdp</a>
+    </c-navigation>
+
+    <c-content>
+        <section>
+            <div class="container-fluid">
+                <h1 style="color: white;">espaço</h1>
+
+                <!-- Example of c-table component         -->
+                <c-table></c-table>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="Sustainability/sustainability.html"><img src="Imagens/sustaintability_vetor.svg" alt="Sustainability" style="width:200px; border:1px solid black; box-shadow: 6px 6px rgba(0, 0, 0, 0.1);">
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="Maintenance/maintenance.html"><img src="Imagens/maintenance_vetor.svg" alt="Maintenance" style="width:200px; border:1px solid black; box-shadow: 6px 6px rgba(0, 0, 0, 0.1);">
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="Productivity/productivity.html"><img src="Imagens/productvity_vetor.svg" alt="Productivity" style="width:200px; border:1px solid black; box-shadow: 6px 6px rgba(0, 0, 0, 0.1);">
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="Logistics/logistics.html"><img src="Imagens/logistics_vetor.svg" alt="Logistics" style="width:200px; border:1px solid black; box-shadow: 6px 6px rgba(0, 0, 0, 0.1);">
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="Quality/quality.html"><img src="Imagens/quality_vetor.svg" alt="Quality" style="width:200px; border:1px solid black; box-shadow: 6px 6px rgba(0, 0, 0, 0.1);">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </c-content>
+
+    <c-footer>
+        <a href="" slot="items">Contact</a>
+    </c-footer>
+
+</body>
+
+</html>

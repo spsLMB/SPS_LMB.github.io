@@ -1,0 +1,180 @@
+@media (min-width: 1641px) {
+    .dataTables_wrapper.no-footer {
+        /*width: 1200px;*/
+        max-width: 1300px;
+        min-width: 1200px;
+        margin-top: -370px;
+        margin-left: -25px;
+    }
+    #div-glue-table {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    canvas {
+        margin-top: -390px;
+        margin-bottom: 100px;
+    }
+}
+
+@media (min-width: 723px) {
+    #div-glue-timeline-chart {
+        margin-left: 400px;
+        margin-top: -370px;
+    }
+    #div-glue-timeline {
+        margin-left: 400px;
+        margin-top: -370px;
+    }
+}
+
+@media (min-width: 1640px) {
+    #div-glue-timeline-chart {
+        margin-left: 1580px;
+        margin-top: -370px;
+    }
+    #div-glue-timeline {
+        margin-left: 1580px;
+        margin-top: -290px;
+    }
+    
+
+}
+
+#currentglue {
+    height: 56px;
+}
+
+.dataTables_length {
+    display: none;
+}
+
+.dataTables_filter input {
+    width: 112px;
+    height: 28px;
+}
+
+.dataTables_filter {
+    margin-bottom: -13px;
+    font-size: 17px;
+}
+
+#btnExport {
+    width: 238px;
+    height: 56px;
+    font-family: "Scania Sans";
+    font-size: 17px;
+    color: #041e42;
+    border: #041e42 1px solid;
+    word-wrap: break-word;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+#btnExport:hover {
+    background-color: #041e42;
+    color: white;
+    cursor: pointer;
+}
+
+#hide_show {
+    width: 238px;
+    height: 56px;
+    font-family: "Scania Sans";
+    font-size: 17px;
+    color: #041e42;
+    border: #041e42 1px solid;
+    word-wrap: break-word;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #fff;
+    margin-top: 0;
+}
+
+#hide_show:hover {
+    background-color: #041e42;
+    color: white;
+    cursor: pointer;
+}
+
+.popid_search {
+    font-family: "Scania Sans Headline";
+    font-size: 16px;
+  }
+
+#popid_search {
+    position: relative;
+    width: 238px;
+    height: 56px;
+    color: #041e42;
+    border: #041e42 1px solid;
+    word-wrap: break-word;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #fff;
+    font-family: "Scania Sans";
+    font-size: 16px;
+}
+
+.btnRefresh {
+    position: relative;
+    width: 238px;
+    height: 56px;
+    color: #041e42;
+    border: #041e42 1px solid;
+    word-wrap: break-word;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.btnRefresh_text {
+    font-family: "Scania Sans";
+    font-size: 17px;
+    color: #041e42;
+    transition: all 0.2s;
+}
+
+.btnRefresh:hover {
+    background-color: #041e42;
+    cursor: pointer;
+}
+
+.btnRefresh:hover span {
+    color: white;
+}
+
+.btnRefresh_loading .btnRefresh_text {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.btnRefresh_loading::after {
+    content: "";
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 4px solid transparent;
+    border-top-color: #041e42;
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+}
+
+.btnRefresh_loading:hover::after {
+    border-top-color: #ffffff;
+}
+
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
